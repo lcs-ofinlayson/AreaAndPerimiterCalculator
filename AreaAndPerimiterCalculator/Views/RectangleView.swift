@@ -1,77 +1,70 @@
-//
-//  RectangleView.swift
-//  AreaAndPerimiterCalculator
-//
-//  Created by Oliver Finlayson on 2023-01-17.
-//
-
 import SwiftUI
 
 struct RectangleView: View {
     
     //MARK: Stored Properties
-    let length: Double = 7
-    let width: Double = 5
+    //@State is a property weapper
+    //Telling SwiftUI to "watch" these properties for changes
+    //Update the user interface when they change
+    @State var length: Double = 70
+    @State var width: Double = 25
     
-    //MARK: Computed properties
-    
+    //MARK: Computed Properties
     var area: Double {
-        
         return length * width
-        
     }
-    
-    
-    
-    
-    
-    //Shoes our user interface
+    //UI
     var body: some View {
-        VStack{
-            
-            HStack{
-           
+        VStack {
+            HStack {
                 Image("Rectangle1")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 250)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250)
                 Spacer()
-        }
-            // Length
+            }
+            
+            //Length
             Text("Length")
                 .font(.title2)
                 .bold()
-        
-            
-            //Use string interpolation \() to display length
+            //Use string interpolation \() to display within
             Text("\(length)")
             
+            //Slider to control length
+            Slider(value: $length,
+                   in: 0...100,
+                   label: { Text("Length")},
+                   minimumValueLabel: { Text("0")},
+                   maximumValueLabel: { Text("100")})
             
-            
-            // Width
+            //Width
             Text("Width")
                 .font(.title2)
                 .bold()
-        
-            
-            //Use string interpolation \() to display length
+            //Use string interpolation \() to display within
             Text("\(width)")
             
+            //Slider to control width
+            Slider(value: Binding.constant(width),
+                   in: 0...100,
+                   label: { Text("width")},
+                   minimumValueLabel: { Text("0")},
+                   maximumValueLabel: { Text("100")})
             
-            
-            // Area
-            Text("area")
+            //Area
+            Text("Area")
                 .font(.title2)
                 .bold()
-        
-            
-            //Use string interpolation \() to display length
+            //Use string interpolation \() to display within
             Text("\(area)")
             
+            
             Spacer()
+        }
     }
 }
-}
+
 struct RectangleView_Previews: PreviewProvider {
     static var previews: some View {
         RectangleView()
