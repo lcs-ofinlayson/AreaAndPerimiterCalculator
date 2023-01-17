@@ -46,7 +46,7 @@ struct RectangleView: View {
             Text("\(width)")
             
             //Slider to control width
-            Slider(value: Binding.constant(width),
+            Slider(value:($width),
                    in: 0...100,
                    label: { Text("width")},
                    minimumValueLabel: { Text("0")},
