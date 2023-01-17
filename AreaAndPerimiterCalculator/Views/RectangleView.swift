@@ -13,9 +13,12 @@ struct RectangleView: View {
     var area: Double {
         return length * width
     }
+    var perimiter: Double {
+        return length + width
+    }
     //UI
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             HStack {
                 Image("Rectangle1")
                     .resizable()
@@ -24,42 +27,61 @@ struct RectangleView: View {
                 Spacer()
             }
             
-            //Length
-            Text("Length")
-                .font(.title2)
-                .bold()
-            //Use string interpolation \() to display within
-            Text("\(length)")
-            
-            //Slider to control length
-            Slider(value: $length,
-                   in: 0...100,
-                   label: { Text("Length")},
-                   minimumValueLabel: { Text("0")},
-                   maximumValueLabel: { Text("100")})
-            
-            //Width
-            Text("Width")
-                .font(.title2)
-                .bold()
-            //Use string interpolation \() to display within
-            Text("\(width)")
-            
-            //Slider to control width
-            Slider(value:($width),
-                   in: 0...100,
-                   label: { Text("width")},
-                   minimumValueLabel: { Text("0")},
-                   maximumValueLabel: { Text("100")})
-            
-            //Area
-            Text("Area")
-                .font(.title2)
-                .bold()
-            //Use string interpolation \() to display within
-            Text("\(area)")
+            Group{
+                
+                //Length
+                Text("Length")
+                    .font(.title2)
+                    .bold()
+                //Use string interpolation \() to display within
+                Text("\(length)")
+                
+                //Slider to control length
+                Slider(value: $length,
+                       in: 0...100,
+                       label: { Text("Length")},
+                       minimumValueLabel: { Text("0")},
+                       maximumValueLabel: { Text("100")})
+            }
             
             
+            Group{
+                //Width
+                Text("Width")
+                    .font(.title2)
+                    .bold()
+                //Use string interpolation \() to display within
+                Text("\(width)")
+                
+                //Slider to control width
+                Slider(value:($width),
+                       in: 0...100,
+                       label: { Text("width")},
+                       minimumValueLabel: { Text("0")},
+                       maximumValueLabel: { Text("100")})
+            }
+            
+            Group{
+                //Area
+                Text("Area")
+                    .font(.title2)
+                    .bold()
+                //Use string interpolation \() to display within
+                Text("\(area)")
+            }
+            
+            
+            Group{
+                
+                
+                // Perimiter
+                Text("Perimiter")
+                    .font(.title2)
+                    .bold()
+                //Use string interpolation \() to display within
+                Text("\(perimiter)")
+                
+            }
             Spacer()
         }
     }
