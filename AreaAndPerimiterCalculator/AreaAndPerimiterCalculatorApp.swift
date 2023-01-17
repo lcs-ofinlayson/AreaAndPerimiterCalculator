@@ -11,7 +11,7 @@ import SwiftUI
 struct AreaAndPerimiterCalculatorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RectangleView()
         }
     }
 }
